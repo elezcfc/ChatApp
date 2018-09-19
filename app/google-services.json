@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "44196430896",
+    "firebase_url": "https://chatapp-a7d4b.firebaseio.com",
+    "project_id": "chatapp-a7d4b",
+    "storage_bucket": "chatapp-a7d4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44196430896:android:daa45263c143f391",
+        "android_client_info": {
+          "package_name": "com.example.elezs.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "44196430896-8hu83jvpe19ugl3aom6cvvm5ejeq65ge.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.elezs.chatapp",
+            "certificate_hash": "046dd1a1bbc7d03f0aadf8de42de8010c01eb225"
+          }
+        },
+        {
+          "client_id": "44196430896-u1558kqieul4fi1kbh8i9femuj45oc8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXfRgRd-4uoBupq9xeXeE0foXg4FtKBpA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "44196430896-u1558kqieul4fi1kbh8i9femuj45oc8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
