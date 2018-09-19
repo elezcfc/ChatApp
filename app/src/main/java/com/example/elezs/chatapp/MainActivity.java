@@ -26,7 +26,6 @@ import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseListAdapter<Message> adapter;
     private static final int SIGN_IN_REQUEST_CODE = 1;
 
     @Override
@@ -53,13 +52,9 @@ public class MainActivity extends AppCompatActivity {
     private void handleUserAuthentication() {
 
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            // Start sign in/sign up activity
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SIGN_IN_REQUEST_CODE);
         } else {
-            // User is already signed in. Therefore, display
-            // a welcome Toast
             Toast.makeText(this, "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_LONG).show();
-            // Load chat room contents
             displayChatMessages();
         }
     }
@@ -70,7 +65,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayChatMessages() {
         ListView messageListView = (ListView) findViewById(R.id.list_of_messages);
-        adapter = new FirebaseListAdapter<Message>(this, Message.class, R.layout.list_item_message, FirebaseDatabase.getInstance().getReference()) {
+        FirebaseListAdapter<Message> adapter = setupAdapter();
+        messageListView.setAdapter(adapter);
+    }
+
+    private FirebaseListAdapter setupAdapter() {
+        return new FirebaseListAdapter<Message>(this, Message.class, R.layout.list_item_message, FirebaseDatabase.getInstance().getReference()) {
             @Override
             protected void populateView(View v, Message model, int position) {
                 TextView user = (TextView) v.findViewById(R.id.user_text_view);
@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 time.setText(simpleDateFormat.format(model.getTime()));
             }
         };
-        messageListView.setAdapter(adapter);
     }
 
     @Override
@@ -117,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(MainActivity.this,"You have been signed out.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "You have been signed out.", Toast.LENGTH_LONG).show();
                             finish();
                         }
                     });
