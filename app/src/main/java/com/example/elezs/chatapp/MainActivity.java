@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayChatMessages() {
         ListView messageListView = (ListView) findViewById(R.id.list_of_messages);
+        messageListView.setDivider(getResources().getDrawable(R.drawable.divider));
         FirebaseListAdapter<Message> adapter = setupAdapter();
         messageListView.setAdapter(adapter);
     }
@@ -76,12 +80,31 @@ public class MainActivity extends AppCompatActivity {
                 TextView user = (TextView) v.findViewById(R.id.user_text_view);
                 TextView message = (TextView) v.findViewById(R.id.message_text_view);
                 TextView time = (TextView) v.findViewById(R.id.time_text_view);
+                LinearLayout linearLayout = (LinearLayout) v.findViewById(R.id.message_holder_layout);
 
-                user.setText(model.getUser());
+                TextView user_away = (TextView) v.findViewById(R.id.user_text_view_away);
+                TextView message_away = (TextView) v.findViewById(R.id.message_text_view_away);
+                TextView time_away = (TextView) v.findViewById(R.id.time_text_view_away);
+                LinearLayout linearLayout_away = (LinearLayout) v.findViewById(R.id.message_holder_layout_away);
+
+                user.setText(model.getUser()+":");
+                user_away.setText(model.getUser()+":");
+                boolean sameUser = model.getUser().equals(getUserName());
+                if (sameUser) {
+                    linearLayout.setEnabled(true);
+                    linearLayout_away.setEnabled(true);
+                    linearLayout_away.setVisibility(View.GONE);
+                } else {
+                    linearLayout.setEnabled(false);
+                    linearLayout_away.setEnabled(false);
+                    linearLayout.setVisibility(View.GONE);
+                }
                 message.setText(model.getText());
+                message_away.setText(model.getText());
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy (HH:mm:ss)");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy (HH:mm)");
                 time.setText(simpleDateFormat.format(model.getTime()));
+                time_away.setText(simpleDateFormat.format(model.getTime()));
             }
         };
     }
@@ -96,8 +119,6 @@ public class MainActivity extends AppCompatActivity {
                 displayChatMessages();
             } else {
                 Toast.makeText(this, "We couldn't sign you in. Please try again later.", Toast.LENGTH_LONG).show();
-
-                // Close the app
                 finish();
             }
         }

@@ -39,4 +39,9 @@ public class Message {
     public void setTime(long time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return user+": "+text;
+    }
 }

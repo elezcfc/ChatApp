@@ -6,14 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.elezs.chatapp.MainActivity">
 
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/grid_3x"
+        android:layout_marginEnd="@dimen/grid_3x"
         android:clickable="true"
-        android:src="@android:drawable/btn_star"
+        android:src="@android:drawable/ic_dialog_email"
         android:tint="@android:color/white"
         app:fabSize="mini" />
 
@@ -22,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/grid_2x"
         android:layout_toLeftOf="@id/submitBtn">
 
         <EditText
@@ -38,7 +42,9 @@
         android:layout_above="@id/submitBtn"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/grid_2x"
+        android:layout_marginEnd="@dimen/grid_2x"
+        android:layout_marginStart="@dimen/grid_2x"
         android:divider="@android:color/transparent"
         android:dividerHeight="16dp" />
 
