@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:id="@+id/item_root_layout"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="false"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/time_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/grid_1x"
+        android:layout_marginStart="@dimen/grid_3x"
+        android:layout_marginTop="@dimen/grid_1x"
+        android:text="Text"
+        android:textColor="@android:color/darker_gray" />
 
     <LinearLayout
         android:id="@+id/message_holder_layout"
@@ -11,17 +22,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/selector_chat_bubble"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/time_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/grid_half"
-            android:layout_marginStart="@dimen/grid_half"
-            android:layout_marginTop="@dimen/grid_1x"
-            android:text="Text"
-            android:textColor="@android:color/darker_gray" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -51,55 +51,5 @@
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
 
-    <LinearLayout
-        android:id="@+id/message_holder_layout_away"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_chat_bubble"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/time_text_view_away"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/grid_half"
-            android:layout_marginStart="@dimen/grid_half"
-            android:layout_marginTop="@dimen/grid_1x"
-            android:text="Text"
-            android:textColor="@android:color/darker_gray" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/grid_1x"
-            android:layout_marginEnd="@dimen/grid_half"
-            android:layout_marginStart="@dimen/grid_half"
-            android:orientation="horizontal"
-            android:padding="@dimen/grid_1x">
-
-            <TextView
-                android:id="@+id/user_text_view_away"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Text"
-                android:textColor="@android:color/white"
-                android:textStyle="normal|bold" />
-
-            <TextView
-                android:id="@+id/message_text_view_away"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Text"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>
